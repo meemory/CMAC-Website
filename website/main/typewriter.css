@@ -1,0 +1,35 @@
+.intro-title {
+  overflow: hidden;
+  padding: 5px;
+  white-space: nowrap;
+  font-size: 1.6rem;
+  width: 0;
+  animation: typing 1s steps(20, end) forwards;
+  color: white;
+}
+.blinking{
+    animation: blinke 1s infinite;
+    display: inline-block;
+}
+.colorgreen{
+    color:#008d8c;
+}
+.typist {
+  display: inline-block;
+}
+@keyframes typing {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes blinke {
+  from {
+    color: transparent;
+  }
+  to {
+    color: #008d8c;
+  }
+}
