@@ -1,35 +1,32 @@
 .intro-title {
-  overflow: hidden;
-  padding: 5px;
+  width: 22ch;
+  animation: typing 2s steps(22),
+  blink .5s step-end infinite alternate;
   white-space: nowrap;
-  font-size: 1.6rem;
-  width: 0;
-  animation: typing 1s steps(20, end) forwards;
-  color: white;
-}
-.blinking{
-    animation: blinke 1s infinite;
-    display: inline-block;
+  overflow: hidden;
+  border-right: 3px solid;
+  border-color:#008d8c;
+  padding-right: -50px;
+  font-family: monospace;
+  font-size: 2em;
 }
 .colorgreen{
     color:#008d8c;
 }
-.typist {
-  display: inline-block;
+.Typist {
+  height: 100vh;
+  display: grid;
+  place-items: center;
 }
 @keyframes typing {
   from {
-    width: 0%;
-  }
-  to {
-    width: 100%;
+    width: 0
   }
 }
-@keyframes blinke {
-  from {
-    color: transparent;
-  }
-  to {
-    color: #008d8c;
+@keyframes blink {
+  50% {
+    border-color: transparent
   }
 }
+
+.btn:hover, .btn:active {background-color: #008d8c !important;}
