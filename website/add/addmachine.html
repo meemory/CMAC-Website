@@ -24,11 +24,11 @@
           <div class="offcanvas-body ">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="../add/add.html">add a person</a>
+                <a class="nav-link" href="../add/add.html">add a person</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="../add/addmachine.html">add a machine</a>
-              </li>
+                <a class="nav-link active" aria-current="page" href="../add/addmachine.html">add a machine</a>
+              </li> 
               <li class="nav-item">
                 <a class="nav-link" href="../all/allmachines.html">show all machines</a>
               </li>
@@ -50,21 +50,24 @@
     
   <div class="container">
     <div class="row align-items-center vh-100">
-        <div class="col-6 mx-auto">
+        <div class="col-4 mx-auto">
             <div class="card shadow border">
                 <div class="card-body d-flex flex-column align-items-center">
                     <p class="card-text"> 
-                      <form class="d-flex flex-column gap-2" role="search">
-                        <input class="form-control me-2" type="text" placeholder="example@hotmail.com">
-                        <input class="form-control me-2" type="password" placeholder="Passwort">
-                        <span class=""></span>            
-                      </form>
+                      <form id="form" method="post" class="d-flex flex-column gap-2">
+                        <h2>Add a new machine</h2>
+                        <span>machine name:</span>
+                        <input id="inp" class="form-control me-2" type="text" placeholder="machine name"/>
+                        <input class="btn btn-dark" type="submit" value="add"/>
+                      </form> 
                     </p>
-                    <a href="#" class="btn btn-dark">Login</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
+  <script src="add.js"></script>
   </body>
 </html>
