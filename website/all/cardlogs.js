@@ -3,10 +3,9 @@ async function listAll() {
   let data = await response.json();
 
   for (let i = 0; i < data.length; i++) {
-    console.log(data[0].name);
 
     div = document.createElement("div");
-    div.className = "bg-dark   p-2 g-3";
+    div.className = "bg-dark p-2 g-3";
     col = document.createElement("div");
     col.className = "card";
     card = document.createElement("div");
@@ -16,16 +15,27 @@ async function listAll() {
     cardbody = document.createElement("span");
     cardbody.className = "card-text";
 
-    header = document.createTextNode("Maschine " + (i + 1));
-    cardbody.appendChild(document.createTextNode("Name: " + data[i].name));
+
+    dropdown = document.createElement("button");
+    dropdown.className = "btn btn-secondary";
+    dropdown.id=data[i]._id;
+    dropdown.setAttribute("onclick","saveId();");
+    dropdown.type = "button";
+    dropdown.innerHTML="🗑️";
+
+    header = document.createTextNode("machine " + (i + 1));
+    cardbody.appendChild(document.createTextNode("name: " + data[i].name));
     cardbody.appendChild(document.createElement("br"));
     cardbody.appendChild(
-      document.createTextNode("Machinen ID: " + data[i].idusr)
+      document.createTextNode("id: " + data[i].idusr)
+      
     );
-
+    
     cardtitle.appendChild(header);
     card.appendChild(cardtitle);
     card.appendChild(cardbody);
+    cardbody.appendChild(document.createElement("br"));
+    card.appendChild(dropdown);
     col.appendChild(card);
     div.appendChild(col);
     document.getElementById("check").appendChild(div);
@@ -46,7 +56,7 @@ async function listAllPersons() {
     console.log(data[0].name);
 
     div = document.createElement("div");
-    div.className = "bg-dark   p-2 g-3";
+    div.className = "bg-dark p-2 g-3";
     col = document.createElement("div");
     col.className = "card";
     card = document.createElement("div");
@@ -90,7 +100,6 @@ async function listAllPersons() {
     }
 
     cardbody.appendChild(ul);
-
     cardtitle.appendChild(header);
     card.appendChild(cardtitle);
     card.appendChild(cardbody);
@@ -100,3 +109,12 @@ async function listAllPersons() {
     document.getElementById("check").appendChild(div);
   }
 }
+
+function saveId(){
+  localStorage.setItem("saveId", event.srcElement.id);
+  alert(localStorage.getItem("saveId"));
+} 
+
+function getID(){
+  return localStorage.getItem("saveId");
+} 
