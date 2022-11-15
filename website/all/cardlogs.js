@@ -21,7 +21,7 @@ async function listAll() {
     dropdown.dataset.bsToggle = "modal";
     dropdown.dataset.bsTarget="#staticBackdrop"
     dropdown.id=i;
-    dropdown.setAttribute("onclick","saveId();");
+    dropdown.setAttribute("onclick","saveId(true);");
     dropdown.type = "button";
     dropdown.innerHTML="🗑️";
 
@@ -101,20 +101,33 @@ async function listAllPersons() {
       }
     }
 
+    modal = document.createElement("button");
+    modal.className = "btn btn-secondary";
+    modal.dataset.bsToggle = "modal";
+    modal.dataset.bsTarget="#staticBackdrop"
+    modal.id=i;
+    modal.setAttribute("onclick","saveId(false);");
+    modal.type = "button";
+    modal.innerHTML="🗑️";
+
+
     cardbody.appendChild(ul);
     cardtitle.appendChild(header);
     card.appendChild(cardtitle);
     card.appendChild(cardbody);
     card.appendChild(cardbody1);
+    card.appendChild(document.createElement("br"));
+    card.appendChild(modal);
     col.appendChild(card);
     div.appendChild(col);
     document.getElementById("check").appendChild(div);
   }
 }
 
-function saveId(){
+function saveId(test){
     localStorage.setItem("saveId", event.srcElement.id);
-    run();
+    if(test) run();
+    if(!test) runUser();
 }
 
 async function run(){
@@ -127,6 +140,16 @@ async function run(){
     localStorage.setItem("machineId", test));
 } 
 
+async function runUser(){
+  let response = await fetch("https://testapi.robli.at/user/all");
+  let data = await response.json();
+
+  document.getElementById("machinedel").innerHTML = data[localStorage.getItem("saveId")].name +" " + data[localStorage.getItem("saveId")].surname;
+  var test = data[localStorage.getItem("saveId")]._id;
+  Promise.resolve().then(
+    localStorage.setItem("machineId", test));
+}
+
 function getID(){
   return localStorage.getItem("machineId");
 } 
@@ -137,3 +160,7 @@ function deleteMachine(){
   
 }
 
+function deleteUser(){
+  fetch('https://testapi.robli.at/user/delete/' + getID(), { method: 'DELETE' })
+    .then(() => location.reload());
+}
