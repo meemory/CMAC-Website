@@ -112,27 +112,28 @@ async function listAllPersons() {
   }
 }
 
-async function  saveId(){
-  localStorage.setItem("saveId", event.srcElement.id);
-  let response = await fetch("https://testapi.robli.at/machine/name/" + event.srcElement.id);
+function saveId(){
+    localStorage.setItem("saveId", event.srcElement.id);
+    run();
+}
+
+async function run(){
+  let response = await fetch("https://testapi.robli.at/machine/all");
   let data = await response.json();
-  document.getElementById("machinedel").innerHTML = data;
+
+  document.getElementById("machinedel").innerHTML = data[localStorage.getItem("saveId")].name;
+  var test = data[localStorage.getItem("saveId")]._id;
+  Promise.resolve().then(
+    localStorage.setItem("machineId", test));
 } 
 
 function getID(){
-  return localStorage.getItem("saveId");
+  return localStorage.getItem("machineId");
 } 
 
 function deleteMachine(){
   fetch('https://testapi.robli.at/machine/delete/' + getID(), { method: 'DELETE' })
-    .then(() => element.innerHTML = 'Delete successful');
+    .then(() => location.reload());
+  
 }
 
-
-
-// <!-- Button trigger modal -->
-// <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-//   .
-// </button>
-
-// <!-- Modal -->
