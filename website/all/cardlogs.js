@@ -85,6 +85,7 @@ async function listAllPersons() {
     dropdown.dataset.bsToggle = "dropdown";
     dropdown.type = "button";
     dropdown.innerHTML="allowed Machines";
+    cardbody.appendChild(document.createElement("br"));
     cardbody.appendChild(dropdown);
     ul = document.createElement("ul");
     ul.className = "dropdown-menu";
@@ -116,7 +117,6 @@ async function listAllPersons() {
     card.appendChild(cardtitle);
     card.appendChild(cardbody);
     card.appendChild(cardbody1);
-    card.appendChild(document.createElement("br"));
     card.appendChild(modal);
     col.appendChild(card);
     div.appendChild(col);
