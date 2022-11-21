@@ -40,12 +40,13 @@ async function showButtons(){
     buttonshow = document.getElementById("show");
     dropdown = document.createElement("button");
     dropdown.className = "btn btn-secondary dropdown-toggle";
-    dropdown.dataset.bsToggle = "dropdown";
+    dropdown.dataset.bsToggle = "collapse";
+    dropdown.dataset.bsTarget="#collapseExample";
+    dropdown.
     dropdown.type = "button";
     dropdown.innerHTML="allowed Machines";
     buttonshow.appendChild(dropdown)
     ul = document.createElement("ul");
-    ul.className = "dropdown-menu dropdown-menu-dark";
       for (let t = 0; t < data.length; t++) {
           li = document.createElement("li");
           a = document.createElement("label");

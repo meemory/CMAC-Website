@@ -1,3 +1,5 @@
+
+
 async function listAll() {
   let response = await fetch("https://testapi.robli.at/machine/all");
   let data = await response.json();
@@ -5,9 +7,9 @@ async function listAll() {
   for (let i = 0; i < data.length; i++) {
 
     div = document.createElement("div");
-    div.className = "bg-dark p-2 g-3";
+    div.className = "p-2 g-3";
     col = document.createElement("div");
-    col.className = "card";
+    col.className = "card shadow-border text-bg-dark border-dark";
     card = document.createElement("div");
     card.className = "card-body";
     cardtitle = document.createElement("h5");
@@ -17,13 +19,15 @@ async function listAll() {
 
 
     dropdown = document.createElement("button");
-    dropdown.className = "btn btn-secondary";
+    dropdown.className = "btn-close btn-close-white";
     dropdown.dataset.bsToggle = "modal";
     dropdown.dataset.bsTarget="#staticBackdrop"
+    dropdown.ariaLabel="Close";
     dropdown.id=i;
     dropdown.setAttribute("onclick","saveId(true);");
     dropdown.type = "button";
-    dropdown.innerHTML="🗑️";
+
+    head = document.createElement("div");
 
     header = document.createTextNode("machine " + (i + 1));
     cardbody.appendChild(document.createTextNode("name: " + data[i].name));
@@ -32,12 +36,13 @@ async function listAll() {
       document.createTextNode("id: " + data[i].idusr)
       
     );
-    
-    cardtitle.appendChild(header);
+    head.appendChild(header);
+    head.appendChild(dropdown);
+    cardtitle.appendChild(head);
     card.appendChild(cardtitle);
     card.appendChild(cardbody);
     cardbody.appendChild(document.createElement("br"));
-    card.appendChild(dropdown);
+
     col.appendChild(card);
     div.appendChild(col);
     document.getElementById("check").appendChild(div);
@@ -56,11 +61,10 @@ async function listAllPersons() {
 
   for (let i = 0; i < data.length; i++) {
     console.log(data[0].name);
-
     div = document.createElement("div");
-    div.className = "bg-dark p-2 g-3";
+    div.className = "p-2 g-3";
     col = document.createElement("div");
-    col.className = "card";
+    col.className = "card shadow-border text-bg-dark border-dark";
     card = document.createElement("div");
     card.className = "card-body";
     cardtitle = document.createElement("h5");
@@ -111,6 +115,12 @@ async function listAllPersons() {
     modal.type = "button";
     modal.innerHTML="🗑️";
 
+    logs = document.createElement("button");
+    logs.className = "btn btn-secondary";
+    logs.id=data[i]._id;
+    logs.setAttribute("onclick","saveLogId();");
+    logs.type = "button";
+    logs.innerHTML="📄";
 
     cardbody.appendChild(ul);
     cardtitle.appendChild(header);
@@ -118,6 +128,7 @@ async function listAllPersons() {
     card.appendChild(cardbody);
     card.appendChild(cardbody1);
     card.appendChild(modal);
+    card.appendChild(logs);
     col.appendChild(card);
     div.appendChild(col);
     document.getElementById("check").appendChild(div);
@@ -129,15 +140,19 @@ function saveId(test){
     if(test) run();
     if(!test) runUser();
 }
-
-async function run(){
+function saveLogId(){
+  localStorage.setItem("log", event.srcElement.id);
+  showLog();
+}
+async function run(temp){
   let response = await fetch("https://testapi.robli.at/machine/all");
   let data = await response.json();
 
-  document.getElementById("machinedel").innerHTML = data[localStorage.getItem("saveId")].name;
-  var test = data[localStorage.getItem("saveId")]._id;
-  Promise.resolve().then(
-    localStorage.setItem("machineId", test));
+    document.getElementById("machinedel").innerHTML = data[localStorage.getItem("saveId")].name;
+    var test = data[localStorage.getItem("saveId")]._id;
+    Promise.resolve().then(
+      localStorage.setItem("machineId", test));
+  
 } 
 
 async function runUser(){
@@ -150,6 +165,63 @@ async function runUser(){
     localStorage.setItem("machineId", test));
 }
 
+async function getName(){
+  
+}
+
 function getID(){
   return localStorage.getItem("machineId");
 } 
+
+
+async function showPersonalLogs(){
+  fetch("https://testapi.robli.at/log/user", {
+    method: "POST",
+    body: JSON.stringify({
+      userID: localStorage.getItem("log"),
+    }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  })
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(data) {
+      accessLog(data);
+      return data;
+    })
+}
+
+function showLog(){
+  window.open("logs.html");
+}
+
+async function accessLog(data){
+  let response = await fetch("https://testapi.robli.at/machine/all");
+  let data1 = await response.json();
+  const arr=[];
+  for (let i = 0; i < data1.length; i++) {
+        arr.push(data1[i].name);
+  }
+  console.log(arr);
+  for (let i = 0; i < data.length; i++) {
+
+    tr = document.createElement("tr");
+    
+    td1 = document.createElement("td");
+    td1.appendChild(document.createTextNode(arr[data[i].machineID]));
+    td2 = document.createElement("td");
+    td2.appendChild(document.createTextNode(data[i].startT));
+    td3 = document.createElement("td");
+    td3.appendChild(document.createTextNode(data[i].endT));
+    td4 = document.createElement("td");
+    td4.appendChild(document.createTextNode(data[i].deltaH + "h " + data[i].deltaM + "m"));
+   
+    tr.appendChild(td1);
+    tr.appendChild(td2);
+    tr.appendChild(td3);
+    tr.appendChild(td4);
+    document.getElementById("tmain").appendChild(tr);
+  }
+}

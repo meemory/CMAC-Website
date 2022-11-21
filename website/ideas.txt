@@ -1,0 +1,6 @@
+-after delete a success message with a toast (https://getbootstrap.com/docs/5.2/components/toasts/)
+-changing the success message at add
+-formatting 
+-making everything cleaner
+-adding breadcrumbs to main page
+-add close button on delete
