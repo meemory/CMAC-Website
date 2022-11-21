@@ -37,7 +37,6 @@ form.addEventListener("submit", function (e) {
 async function showButtons(){
   let response = await fetch("https://testapi.robli.at/machine/all");
   let data = await response.json();
-  console.log("geht");
     buttonshow = document.getElementById("show");
     dropdown = document.createElement("button");
     dropdown.className = "btn btn-secondary dropdown-toggle";
@@ -46,12 +45,18 @@ async function showButtons(){
     dropdown.innerHTML="allowed Machines";
     buttonshow.appendChild(dropdown)
     ul = document.createElement("ul");
-    ul.className = "dropdown-menu";
+    ul.className = "dropdown-menu dropdown-menu-dark";
       for (let t = 0; t < data.length; t++) {
           li = document.createElement("li");
-          a = document.createElement("a");
-          a.className = "dropdown-item";
-          li.appendChild(a);
+          a = document.createElement("label");
+          a.htmlFor="check" + t;
+          a.className="dropdown-item";
+          b = document.createElement("input");
+          b.type = "checkbox";
+          b.name="check" + t;
+          b.className="dropdown-item";
+          li.append(a);
+          li.append(b);
           a.appendChild(document.createTextNode(data[t].name));
           ul.appendChild(li);
         }
