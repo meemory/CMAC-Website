@@ -1,6 +1,4 @@
-
-
-async function listAll() {
+async function listAll() { //lists all machines with delete and edit 
   let response = await fetch("https://testapi.robli.at/machine/all");
   let data = await response.json();
 
@@ -49,7 +47,7 @@ async function listAll() {
   }
 }
 
-async function listAllPersons() {
+async function listAllPersons() { //lists all persons 
   let [data, data1] = await Promise.all([
     fetch("https://testapi.robli.at/user/all").then((response) =>
       response.json()
@@ -165,10 +163,6 @@ async function runUser(){
     localStorage.setItem("machineId", test));
 }
 
-async function getName(){
-  
-}
-
 function getID(){
   return localStorage.getItem("machineId");
 } 
@@ -224,4 +218,5 @@ async function accessLog(data){
     tr.appendChild(td4);
     document.getElementById("tmain").appendChild(tr);
   }
+
 }
