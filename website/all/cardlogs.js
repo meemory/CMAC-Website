@@ -120,6 +120,13 @@ async function listAllPersons() { //lists all persons
     logs.type = "button";
     logs.innerHTML="📄";
 
+    edit = document.createElement("button");
+    edit.className = "btn btn-secondary";
+    edit.id=data[i]._id;
+    edit.setAttribute("onclick","updateUser();");
+    edit.type = "button";
+    edit.innerHTML="🖊️";
+
     cardbody.appendChild(ul);
     cardtitle.appendChild(header);
     card.appendChild(cardtitle);
@@ -127,6 +134,7 @@ async function listAllPersons() { //lists all persons
     card.appendChild(cardbody1);
     card.appendChild(modal);
     card.appendChild(logs);
+    card.appendChild(edit);
     col.appendChild(card);
     div.appendChild(col);
     document.getElementById("check").appendChild(div);
@@ -220,3 +228,11 @@ async function accessLog(data){
   }
 
 }
+  function updateUser(){
+    localStorage.setItem("update", event.srcElement.id);
+    showEditPage();
+  }
+
+  function showEditPage(){
+    window.open("edit.html");
+  }
