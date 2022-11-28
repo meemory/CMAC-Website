@@ -11,7 +11,7 @@
     />
     <title>CMAC</title>
   </head>
-  <body class="bg-dark" onload="showPersonalLogs()">
+  <body class="bg-dark" onload="showMachineNames  ()">
     <!-- Navbar start -->
     <nav class="navbar navbar-dark bg-dark fixed-top">
       <div class="container-fluid">
@@ -57,10 +57,11 @@
                     <div class="card-body d-flex flex-column align-items-center">
                         <form id="form" method="post" class="d-flex flex-column gap-2">
                             <h2 id="userUpdate">User: </h2>
+                            <input class="btn btn-dark" type="submit" onclick="updatePerson()" value="update"/>
                             <input id="name" class="form-control me-2" type="text" placeholder=""/>
                             <input id="surname" class="form-control me-2" type="text"/>
-                            <input id="inp" class="form-control me-2" type="text"/>
-                            <input class="btn btn-dark" type="submit" value="update"/>
+                            <input id="email" class="form-control me-2" type="text"/>
+                            <input id="nfc" class="form-control me-2" type="text" placeholder="SET NFC"/>
                           </form> 
                     </div>
                 </div>
@@ -75,6 +76,6 @@
     ></script>
     
     <script src="cardlogs.js" async></script>
-    <script src="delete.js" async></script>
+    <script src="edit.js" async></script>
   </body>
 </html>

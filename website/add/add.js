@@ -24,11 +24,9 @@ form.addEventListener("submit", function (e) {
       document.getElementById("inp").value=" ";
       p.className="text-success"; 
     })
-    .catch((error) => p.appendChild(document.createTextNode("couldnt add!")));
+    .catch((error) => alert());
   }
   else{
-    p.appendChild(document.createTextNode("WRONG ERROR!"));
-    p.className="text-error "; 
   }
   document.getElementById("form").appendChild(p);
 });

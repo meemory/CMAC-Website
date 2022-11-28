@@ -122,7 +122,7 @@ async function listAllPersons() { //lists all persons
 
     edit = document.createElement("button");
     edit.className = "btn btn-secondary";
-    edit.id=data[i]._id;
+    edit.id=i;
     edit.setAttribute("onclick","updateUser();");
     edit.type = "button";
     edit.innerHTML="🖊️";
