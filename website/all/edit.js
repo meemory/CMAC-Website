@@ -1,25 +1,34 @@
  function updatePerson(){
         var dict={};
         var allow=[];
+        var temp=[];
         if(document.getElementById("name").placeholder != document.getElementById("name").value){
             dict["name"] = document.getElementById("name").value;
         }
         if(document.getElementById("surname").placeholder != document.getElementById("surname").value){
-            dict["surname"] = document.getElementById("surnam").value;
+            dict["surname"] = document.getElementById("surname").value;
         }
         if(document.getElementById("email").placeholder != document.getElementById("email").value){
             dict["email"] = document.getElementById("email").value;
         }
+        let j=0;
         for(let i = 0; i< localStorage.getItem("amountCheck"); i++){
-            allow[i] = document.getElementById(i).checked;
+            temp[i] = document.getElementById(i).checked;
+            alert("temp");
+
+            if(temp[i]){
+              allow[j]=i;   
+              j++;
+            }
         }
         dict["nfc"] = document.getElementById("nfc").value;
-        
+        dict["allow"] = allow;
         fetch("https://testapi.robli.at/user/update/" + localStorage.getItem("id"), {
         method: "PUT",
         body: JSON.stringify({
             name : dict.name,
             surname : dict.surname,
+            email: dict.email,
             nfc : dict.nfc,
             allow : dict.allow,
         }),
@@ -31,7 +40,7 @@
             return response.json();
         })
             .then(function (data) {
-               alert("WIN WIN")
+               alert(dict.allow);
         })
             .catch((error) => alert());
 
@@ -64,7 +73,7 @@
     document.getElementById("name").placeholder=data[localStorage.getItem("update")].name;
     document.getElementById("surname").placeholder=data[localStorage.getItem("update")].surname;
     document.getElementById("email").placeholder=data[localStorage.getItem("update")].email;
-    localStorage.setItem("amountCheck", data[localStorage.getItem("update")].allow.length);
+    localStorage.setItem("amountCheck", data1.length);
     localStorage.setItem("id", data[localStorage.getItem("update")]._id);
     for(let i = 0; i< data[localStorage.getItem("update")].allow.length; i++){
       document.getElementById(data[localStorage.getItem("update")].allow[i]).checked=true;

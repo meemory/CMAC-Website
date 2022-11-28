@@ -54,15 +54,14 @@
         <div class="row align-items-center vh-100">
             <div class="col-6 mx-auto">
                 <div class="card text-bg-dark border-dark shadow border">
-                    <div class="card-body d-flex flex-column align-items-center">
-                        <form id="form" method="post" class="d-flex flex-column gap-2">
+                    <div class="card-body d-flex flex-column align-items-center" id="form">
                             <h2 id="userUpdate">User: </h2>
-                            <input class="btn btn-dark" type="submit" onclick="updatePerson()" value="update"/>
+                            <input class="btn btn-dark" onclick="updatePerson();" value="update"/>
                             <input id="name" class="form-control me-2" type="text" placeholder=""/>
                             <input id="surname" class="form-control me-2" type="text"/>
                             <input id="email" class="form-control me-2" type="text"/>
                             <input id="nfc" class="form-control me-2" type="text" placeholder="SET NFC"/>
-                          </form> 
+                      
                     </div>
                 </div>
             </div>
