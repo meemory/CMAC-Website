@@ -1,3 +1,6 @@
+
+
+
 async function listAll() { //lists all machines with delete and edit 
   let response = await fetch("https://testapi.robli.at/machine/all");
   let data = await response.json();
@@ -18,6 +21,8 @@ async function listAll() { //lists all machines with delete and edit
 
     dropdown = document.createElement("button");
     dropdown.className = "btn-close btn-close-white";
+    dropdown.style.width = "0.5em";
+    dropdown.style.height = "0.5em";
     dropdown.dataset.bsToggle = "modal";
     dropdown.dataset.bsTarget="#staticBackdrop"
     dropdown.ariaLabel="Close";
@@ -27,9 +32,7 @@ async function listAll() { //lists all machines with delete and edit
 
     head = document.createElement("div");
 
-    header = document.createTextNode("machine " + (i + 1));
-    cardbody.appendChild(document.createTextNode("name: " + data[i].name));
-    cardbody.appendChild(document.createElement("br"));
+    header = document.createTextNode(data[i].name + "    ");
     cardbody.appendChild(
       document.createTextNode("id: " + data[i].idusr)
       
@@ -190,9 +193,14 @@ async function showPersonalLogs(){
       return response.json();
     })
     .then(function(data) {
-      accessLog(data);
-      return data;
-    })
+      if(data.length>0){
+        accessLog(data);}
+      else{
+        window.open('','_parent',''); 
+        window.close();
+        alert("couldnt find logs");
+      }return data;
+})
 }
 
 function showLog(){
@@ -236,3 +244,5 @@ async function accessLog(data){
   function showEditPage(){
     window.open("edit.html");
   }
+
+  

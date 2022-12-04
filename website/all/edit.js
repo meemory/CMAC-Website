@@ -14,8 +14,6 @@
         let j=0;
         for(let i = 0; i< localStorage.getItem("amountCheck"); i++){
             temp[i] = document.getElementById(i).checked;
-            alert("temp");
-
             if(temp[i]){
               allow[j]=i;   
               j++;

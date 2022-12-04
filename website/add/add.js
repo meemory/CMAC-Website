@@ -37,6 +37,7 @@ async function showButtons(){
   let data = await response.json();
     buttonshow = document.getElementById("show");
     dropdown = document.createElement("button");
+    alert('test');
     dropdown.className = "btn btn-secondary dropdown-toggle";
     dropdown.dataset.bsToggle = "collapse";
     dropdown.dataset.bsTarget="#collapseExample";

@@ -71,11 +71,9 @@
                           <label>nfc id: </label> 
                           <input class="form-control me-2" type="text" placeholder="ndcid">
                         </div>
-                        <div id="show" class="d-flex flex-column gap-3">
+                        <select class="form-select" multiple="multiple" aria-label="Default select example"id="show">
 
-                        </div>
-                       
-                       
+                        </select>
                        
                         <a href="#" class="d-flex flex-column gap-2 btn btn-dark">Send</a>
                       </form>
@@ -86,6 +84,12 @@
     </div>
 </div>
 
-<script src="add.js"></script>
+<script type="text/javascript">
+  $(document).ready(function () {
+          $('#show').multiselect();
+  })
+</script>
+
+<script src="addusr.js"></script>
   </body>
 </html>
