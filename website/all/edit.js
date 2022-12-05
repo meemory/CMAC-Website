@@ -1,15 +1,24 @@
- function updatePerson(){
+function updatePerson(){
         var dict={};
         var allow=[];
         var temp=[];
-        if(document.getElementById("name").placeholder != document.getElementById("name").value){
-            dict["name"] = document.getElementById("name").value;
+        if(document.getElementById("name").placeholder == document.getElementById("name").value || document.getElementById("name").value==""){
+            dict["name"] = document.getElementById("name").placeholder;
         }
-        if(document.getElementById("surname").placeholder != document.getElementById("surname").value){
-            dict["surname"] = document.getElementById("surname").value;
+        else{
+          dict["name"] = document.getElementById("name").value;
         }
-        if(document.getElementById("email").placeholder != document.getElementById("email").value){
-            dict["email"] = document.getElementById("email").value;
+        if(document.getElementById("surname").placeholder == document.getElementById("surname").value  || document.getElementById("surname").value == ""){
+            dict["surname"] = document.getElementById("surname").placeholder;
+        }
+        else{
+          dict["surname"] = document.getElementById("surname").value;
+        }
+        if(document.getElementById("email").placeholder == document.getElementById("email").value || document.getElementById("email").value == ""){
+            dict["email"] = document.getElementById("email").placeholder;
+        }
+        else{
+          dict["email"] = document.getElementById("email").value;
         }
         let j=0;
         for(let i = 0; i< localStorage.getItem("amountCheck"); i++){
@@ -21,6 +30,12 @@
         }
         dict["nfc"] = document.getElementById("nfc").value;
         dict["allow"] = allow;
+        
+        console.log(dict.name);
+        console.log(dict.surname);
+        console.log(dict.email);
+        console.log(dict.nfc);
+        console.log(dict.allow);
         fetch("https://testapi.robli.at/user/update/" + localStorage.getItem("id"), {
         method: "PUT",
         body: JSON.stringify({
@@ -38,15 +53,40 @@
             return response.json();
         })
             .then(function (data) {
-               alert(dict.allow);
+               alert("edited User");
+               location.href="../all/allpersons.html"
         })
             .catch((error) => alert());
 
-        alert("done");
   }
 
 
+function updateMachine() {
+        var name="";
+        if(document.getElementById("name").placeholder == document.getElementById("name").value){
+          alert("please fill in a name")  
+          return;
+        }
+        else(name = document.getElementById("name").value);
+        fetch("https://testapi.robli.at/machine/update/" + localStorage.getItem("id"), {
+        method: "PUT",
+        body: JSON.stringify({
+            name : name,
+        }),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8",
+        },
+        })
+            .then(function (response) {
+            return response.json();
+        })
+            .then(function (data) {
+               alert("edited Machine");
+               location.href="../all/allmachines.html";
+        })
+            .catch((error) => alert());
 
+}
  
  async function showMachineNames(){
     let [data, data1] = await Promise.all([
@@ -76,4 +116,12 @@
     for(let i = 0; i< data[localStorage.getItem("update")].allow.length; i++){
       document.getElementById(data[localStorage.getItem("update")].allow[i]).checked=true;
     }
+  }
+
+  async function onloadMachineEdit(){
+    let response = await fetch("https://testapi.robli.at/machine/all");
+    let data = await response.json();
+
+    document.getElementById("name").placeholder=data[localStorage.getItem("update")].name;
+    localStorage.setItem("id", data[localStorage.getItem("update")]._id);
   }

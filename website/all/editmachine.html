@@ -11,7 +11,7 @@
     />
     <title>CMAC</title>
   </head>
-  <body style="background-color: #212121;" onload="listAllPersons()">
+  <body class="bg-dark" onload="onloadMachineEdit()">
     <!-- Navbar start -->
     <nav class="navbar navbar-dark bg-dark fixed-top">
       <div class="container-fluid">
@@ -21,7 +21,7 @@
         </button>
         <div class="offcanvas offcanvas-end bg-dark" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
           <div class="offcanvas-header">
-            <h5 class="offcanvas-title text-white" id="offcanvasNavbarLabel">[LOGO] CMAC</h5>
+            <h5 class="offcanvas-title text-white"   id="offcanvasNavbarLabel">[LOGO] CMAC</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body ">
@@ -44,27 +44,18 @@
       </div>
     </nav>
     <!-- Navbar end -->
-    
-    <div class="d-flex flex-wrap justify-content-center align-items-center h-80 vh-100" id="check" style="padding-top:60px">
-      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content text-bg-dark">
-            <div class="modal-header bg-dark">
-              <h1 class="modal-title fs-5" id="staticBackdropLabel">Delete machine</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="container">
+        <div class="row align-items-center vh-100">
+            <div class="col-6 mx-auto">
+                <div class="card text-bg-dark border-dark shadow border">
+                    <div class="card-body d-flex flex-column align-items-center" id="form">
+                            <h2 id="userUpdate">User: </h2>
+                            <input class="btn btn-dark" onclick="updateMachine();" value="update"/>
+                            <input id="name" class="form-control me-2" type="text" placeholder=""/>
+                    </div>
+                </div>
             </div>
-            <div class="modal-body">
-              Are you sure that u want to delete <a id="machinedel">[machinename]</a>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">no</button>
-              <button type="button" class="btn btn-primary" onclick="deleteUser()">yes</button>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-    
     </div>
 
     <script
@@ -72,9 +63,8 @@
       integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
       crossorigin="anonymous"
     ></script>
-
-
+    
     <script src="cardlogs.js" async></script>
-    <script src="delete.js" async></script>
+    <script src="edit.js" async></script>
   </body>
 </html>

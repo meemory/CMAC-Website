@@ -30,6 +30,13 @@ async function listAll() { //lists all machines with delete and edit
     dropdown.setAttribute("onclick","saveId(true);");
     dropdown.type = "button";
 
+    edit = document.createElement("button");
+    edit.className = "btn btn-secondary";
+    edit.id=i;
+    edit.setAttribute("onclick","updateMachine();");
+    edit.type = "button";
+    edit.innerHTML="🖊️";
+
     head = document.createElement("div");
 
     header = document.createTextNode(data[i].name + "    ");
@@ -42,6 +49,7 @@ async function listAll() { //lists all machines with delete and edit
     cardtitle.appendChild(head);
     card.appendChild(cardtitle);
     card.appendChild(cardbody);
+    card.appendChild(edit);
     cardbody.appendChild(document.createElement("br"));
 
     col.appendChild(card);
@@ -95,17 +103,15 @@ async function listAllPersons() { //lists all persons
     ul = document.createElement("ul");
     ul.className = "dropdown-menu";
     for (let j = 0; j < data[i].allow.length; j++) {
-      for (let t = 0; t < data1.length; t++) {
-        if (data1[t].idusr == data[i].allow[j]) {
           li = document.createElement("li");
           a = document.createElement("a");
           a.className = "dropdown-item";
           li.appendChild(a);
-          a.appendChild(document.createTextNode(data1[t].name));
+          a.appendChild(document.createTextNode(data1[data[i].allow[j]].name));
           ul.appendChild(li);
-        }
+        
       }
-    }
+    
 
     modal = document.createElement("button");
     modal.className = "btn btn-secondary";
@@ -141,8 +147,8 @@ async function listAllPersons() { //lists all persons
     col.appendChild(card);
     div.appendChild(col);
     document.getElementById("check").appendChild(div);
-  }
-}
+  }}
+
 
 function saveId(test){
     localStorage.setItem("saveId", event.srcElement.id);
@@ -242,7 +248,13 @@ async function accessLog(data){
   }
 
   function showEditPage(){
-    window.open("edit.html");
+    location.href="../all/edit.html";
   }
 
-  
+  function updateMachine(){
+    localStorage.setItem("update", event.srcElement.id);
+    showEditmach();
+  }
+  function showEditmach(){
+    location.href="../all/editmachine.html";
+  }

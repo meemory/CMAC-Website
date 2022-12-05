@@ -30,35 +30,3 @@ form.addEventListener("submit", function (e) {
   }
   document.getElementById("form").appendChild(p);
 });
-
-
-async function showButtons(){
-  let response = await fetch("https://testapi.robli.at/machine/all");
-  let data = await response.json();
-    buttonshow = document.getElementById("show");
-    dropdown = document.createElement("button");
-    alert('test');
-    dropdown.className = "btn btn-secondary dropdown-toggle";
-    dropdown.dataset.bsToggle = "collapse";
-    dropdown.dataset.bsTarget="#collapseExample";
-    dropdown.
-    dropdown.type = "button";
-    dropdown.innerHTML="allowed Machines";
-    buttonshow.appendChild(dropdown)
-    ul = document.createElement("ul");
-      for (let t = 0; t < data.length; t++) {
-          li = document.createElement("li");
-          a = document.createElement("label");
-          a.htmlFor="check" + t;
-          a.className="dropdown-item";
-          b = document.createElement("input");
-          b.type = "checkbox";
-          b.name="check" + t;
-          b.className="dropdown-item";
-          li.append(a);
-          li.append(b);
-          a.appendChild(document.createTextNode(data[t].name));
-          ul.appendChild(li);
-        }
-    buttonshow.appendChild(ul);
-}
