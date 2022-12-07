@@ -25,11 +25,11 @@
                 <div class="card-body d-flex flex-column align-items-center">
                     <p class="card-text"> 
                       <form action="inc/login-inc.php" method="POST" class="d-flex flex-column gap-2">
-                        <input name="user" class="form-control me-2" type="text" placeholder="example@hotmail.com">
-                        <input name="password" class="form-control me-2" type="password" placeholder="Passwort">           
-                    </p>
-                    <a href="#" class="btn btn-dark">Login</a>
-                  </form>
+                        <input id="user" name="user" class="form-control me-2" type="text" placeholder="username">
+                        <input id="password" name="password" class="form-control me-2" type="password" placeholder="passcode"> 
+                        <a class="btn btn-dark" onclick="generateToken()">Login</a>          
+                      </form>
+                   </p>
                 </div>
             </div>
         </div>
@@ -37,6 +37,6 @@
 </div>
 
 
-  <script></script>
+  <script src="login.js"></script>
   </body>
 </html>
