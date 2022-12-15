@@ -1,5 +1,6 @@
+let Bearer = localStorage.getItem("token");
 async function showButtons(){
-    let response = await fetch("https://testapi.robli.at/machine/all");
+    let response = await fetch("https://testapi.robli.at/machine/all",{headers: {"Authorization": Bearer}});
     let data = await response.json();
       buttonshow = document.getElementById("show");
       for (let t = 0; t < data.length; t++) {
@@ -29,6 +30,7 @@ $('#show').selectpicker('refresh');
       }),
       headers: {
         "Content-type": "application/json; charset=UTF-8",
+        "Authorization": Bearer,
       },
     })
       .then(function (response) {

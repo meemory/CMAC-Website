@@ -1,8 +1,10 @@
 
-
+var Bearer= localStorage.getItem("token");
 
 async function listAll() { //lists all machines with delete and edit 
-  let response = await fetch("https://testapi.robli.at/machine/all");
+  
+  let response = await fetch("https://testapi.robli.at/machine/all",{headers: {"Authorization": localStorage.getItem("token")}});
+
   let data = await response.json();
 
   for (let i = 0; i < data.length; i++) {
@@ -60,10 +62,10 @@ async function listAll() { //lists all machines with delete and edit
 
 async function listAllPersons() { //lists all persons 
   let [data, data1] = await Promise.all([
-    fetch("https://testapi.robli.at/user/all").then((response) =>
+    fetch("https://testapi.robli.at/user/all",{headers: {"Authorization": Bearer}}).then((response) =>
       response.json()
     ),
-    fetch("https://testapi.robli.at/machine/all").then((response) =>
+    fetch("https://testapi.robli.at/machine/all",{headers: {"Authorization": Bearer}}).then((response) =>
       response.json()
     ),
   ]);
@@ -160,7 +162,7 @@ function saveLogId(){
   showLog();
 }
 async function run(temp){
-  let response = await fetch("https://testapi.robli.at/machine/all");
+  let response = await fetch("https://testapi.robli.at/machine/all",{headers: {"Authorization": Bearer}});
   let data = await response.json();
 
     document.getElementById("machinedel").innerHTML = data[localStorage.getItem("saveId")].name;
@@ -171,7 +173,7 @@ async function run(temp){
 } 
 
 async function runUser(){
-  let response = await fetch("https://testapi.robli.at/user/all");
+  let response = await fetch("https://testapi.robli.at/user/all",{headers: {"Authorization": Bearer}});
   let data = await response.json();
 
   document.getElementById("machinedel").innerHTML = data[localStorage.getItem("saveId")].name +" " + data[localStorage.getItem("saveId")].surname;
@@ -193,6 +195,7 @@ async function showPersonalLogs(){
     }),
     headers: {
       "Content-type": "application/json; charset=UTF-8",
+      "Authorization": Bearer,
     },
   })
     .then(function(response) {
@@ -214,7 +217,7 @@ function showLog(){
 }
 
 async function accessLog(data){
-  let response = await fetch("https://testapi.robli.at/machine/all");
+  let response = await fetch("https://testapi.robli.at/machine/all",{headers: {"Authorization": Bearer}});
   let data1 = await response.json();
   const arr=[];
   for (let i = 0; i < data1.length; i++) {

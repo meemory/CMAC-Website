@@ -1,3 +1,4 @@
+let Bearer= localStorage.getItem("token");
 function updatePerson(){
         var dict={};
         var allow=[];
@@ -47,6 +48,7 @@ function updatePerson(){
         }),
         headers: {
             "Content-type": "application/json; charset=UTF-8",
+            "Authorization": Bearer,
         },
         })
             .then(function (response) {
@@ -75,6 +77,7 @@ function updateMachine() {
         }),
         headers: {
             "Content-type": "application/json; charset=UTF-8",
+            "Authorization": Bearer,
         },
         })
             .then(function (response) {
@@ -90,10 +93,10 @@ function updateMachine() {
  
  async function showMachineNames(){
     let [data, data1] = await Promise.all([
-      fetch("https://testapi.robli.at/user/all").then((response) =>
+      fetch("https://testapi.robli.at/user/all",{headers: {"Authorization": Bearer}}).then((response) =>
         response.json()
       ),
-      fetch("https://testapi.robli.at/machine/all").then((response) =>
+      fetch("https://testapi.robli.at/machine/all",{headers: {"Authorization": Bearer}}).then((response) =>
         response.json()
       ),
     ]);
@@ -119,7 +122,7 @@ function updateMachine() {
   }
 
   async function onloadMachineEdit(){
-    let response = await fetch("https://testapi.robli.at/machine/all");
+    let response = await fetch("https://testapi.robli.at/machine/all",{headers: {"Authorization": Bearer}});
     let data = await response.json();
 
     document.getElementById("name").placeholder=data[localStorage.getItem("update")].name;

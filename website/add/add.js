@@ -1,5 +1,5 @@
 var form = document.getElementById("form");
-
+let Bearer = localStorage.getItem("token");
 form.addEventListener("submit", function (e) {
   e.preventDefault();
   
@@ -14,6 +14,7 @@ form.addEventListener("submit", function (e) {
     }),
     headers: {
       "Content-type": "application/json; charset=UTF-8",
+      "Authorization": Bearer,
     },
   })
     .then(function (response) {
