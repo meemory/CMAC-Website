@@ -1,16 +1,16 @@
-
-var Bearer= localStorage.getItem("token");
+Bearer= localStorage.getItem("token");
 
 async function listAll() { //lists all machines with delete and edit 
   
   let response = await fetch("https://testapi.robli.at/machine/all",{headers: {"Authorization": localStorage.getItem("token")}});
 
   let data = await response.json();
-
+  let d;
   for (let i = 0; i < data.length; i++) {
 
     div = document.createElement("div");
     div.className = "p-2 g-3";
+    div.id="card" + i;
     col = document.createElement("div");
     col.className = "card shadow-border text-bg-dark border-dark";
     card = document.createElement("div");
@@ -39,25 +39,27 @@ async function listAll() { //lists all machines with delete and edit
     edit.type = "button";
     edit.innerHTML="🖊️";
 
-    head = document.createElement("div");
-
-    header = document.createTextNode(data[i].name + "    ");
+    head = document.createElement("a");
+    head.id="name"+i;
+    
+    headers = document.createTextNode(data[i].name + "    ");
     cardbody.appendChild(
       document.createTextNode("id: " + data[i].idusr)
       
     );
-    head.appendChild(header);
+    head.appendChild(headers);
     head.appendChild(dropdown);
     cardtitle.appendChild(head);
     card.appendChild(cardtitle);
     card.appendChild(cardbody);
     card.appendChild(edit);
     cardbody.appendChild(document.createElement("br"));
-
+    d=i;
     col.appendChild(card);
     div.appendChild(col);
     document.getElementById("check").appendChild(div);
   }
+  localStorage.setItem("lenthMachines", d);
 }
 
 async function listAllPersons() { //lists all persons 
@@ -69,11 +71,11 @@ async function listAllPersons() { //lists all persons
       response.json()
     ),
   ]);
-
+  let d;
   for (let i = 0; i < data.length; i++) {
-    console.log(data[0].name);
     div = document.createElement("div");
     div.className = "p-2 g-3";
+    div.id="card" + i;
     col = document.createElement("div");
     col.className = "card shadow-border text-bg-dark border-dark";
     card = document.createElement("div");
@@ -84,7 +86,7 @@ async function listAllPersons() { //lists all persons
     cardbody.className = "card-text";
     cardbody1 = document.createElement("p");
     cardbody1.className = "card-text";
-
+    d=i;
     header = document.createTextNode("Person " + (i + 1));
     cardbody.appendChild(document.createTextNode("name: " + data[i].name));
     cardbody.appendChild(document.createElement("br"));
@@ -149,7 +151,9 @@ async function listAllPersons() { //lists all persons
     col.appendChild(card);
     div.appendChild(col);
     document.getElementById("check").appendChild(div);
-  }}
+  }
+  localStorage.setItem("lengthUser", d);
+}
 
 
 function saveId(test){
@@ -223,7 +227,6 @@ async function accessLog(data){
   for (let i = 0; i < data1.length; i++) {
         arr.push(data1[i].name);
   }
-  console.log(arr);
   for (let i = 0; i < data.length; i++) {
 
     tr = document.createElement("tr");

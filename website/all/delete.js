@@ -1,4 +1,3 @@
-const { location } = require("express/lib/response");
 
 let Bearer= localStorage.getItem("token");
 function deleteMachine(){

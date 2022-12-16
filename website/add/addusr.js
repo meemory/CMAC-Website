@@ -10,6 +10,7 @@ async function showButtons(){
             buttonshow.appendChild(a);
           }
         
+      
 $('#show').selectpicker('refresh');
   }
 
