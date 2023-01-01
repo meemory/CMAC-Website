@@ -1,10 +1,4 @@
 async function  generateToken(){
-    // let data = new FormData();
-    // data.append("username", document.getElementById("user").value);
-    // data.append("password", document.getElementById("password").value);
-    
-    // print(data);
-
     await fetch("http://testapi.robli.at/user/admin/login", {
         method: "POST", 
         headers: {
@@ -26,5 +20,4 @@ async function  generateToken(){
                 window.location="../main/index.html";
             }
         })
-        // .catch((error) => alert(error))  ;
 }

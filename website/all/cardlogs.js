@@ -59,7 +59,6 @@ async function listAll() { //lists all machines with delete and edit
     div.appendChild(col);
     document.getElementById("check").appendChild(div);
   }
-  localStorage.setItem("lenthMachines", d);
 }
 
 async function listAllPersons() { //lists all persons 
@@ -120,7 +119,7 @@ async function listAllPersons() { //lists all persons
     modal = document.createElement("button");
     modal.className = "btn btn-secondary";
     modal.dataset.bsToggle = "modal";
-    modal.dataset.bsTarget="#staticBackdrop"
+    modal.dataset.bsTarget="#staticBackdrop";
     modal.id=i;
     modal.setAttribute("onclick","saveId(false);");
     modal.type = "button";
@@ -152,46 +151,41 @@ async function listAllPersons() { //lists all persons
     div.appendChild(col);
     document.getElementById("check").appendChild(div);
   }
-  localStorage.setItem("lengthUser", d);
 }
 
-
-function saveId(test){
+async function saveId(checkInp){
     localStorage.setItem("saveId", event.srcElement.id);
-    if(test) run();
-    if(!test) runUser();
+
+    if(checkInp){
+    let response = await fetch("https://testapi.robli.at/machine/all",{headers: {"Authorization": Bearer}});
+    let data = await response.json();
+  
+      document.getElementById("machinedel").innerHTML = data[localStorage.getItem("saveId")].name;
+      var test = data[localStorage.getItem("saveId")]._id;
+      Promise.resolve().then(
+        localStorage.setItem("machineId", test));
+    }
+    else{ 
+      let response = await fetch("https://testapi.robli.at/user/all",{headers: {"Authorization": Bearer}});
+      let data = await response.json();
+    
+      document.getElementById("machinedel").innerHTML = data[localStorage.getItem("saveId")].name +" " + data[localStorage.getItem("saveId")].surname;
+      var test = data[localStorage.getItem("saveId")]._id;
+      Promise.resolve().then(
+        localStorage.setItem("machineId", test));
+        console.log(test);
+    }
 }
 function saveLogId(){
   localStorage.setItem("log", event.srcElement.id);
-  showLog();
-}
-async function run(temp){
-  let response = await fetch("https://testapi.robli.at/machine/all",{headers: {"Authorization": Bearer}});
-  let data = await response.json();
-
-    document.getElementById("machinedel").innerHTML = data[localStorage.getItem("saveId")].name;
-    var test = data[localStorage.getItem("saveId")]._id;
-    Promise.resolve().then(
-      localStorage.setItem("machineId", test));
-  
-} 
-
-async function runUser(){
-  let response = await fetch("https://testapi.robli.at/user/all",{headers: {"Authorization": Bearer}});
-  let data = await response.json();
-
-  document.getElementById("machinedel").innerHTML = data[localStorage.getItem("saveId")].name +" " + data[localStorage.getItem("saveId")].surname;
-  var test = data[localStorage.getItem("saveId")]._id;
-  Promise.resolve().then(
-    localStorage.setItem("machineId", test));
+  window.open("logs.html");
 }
 
 function getID(){
   return localStorage.getItem("machineId");
 } 
 
-
-async function showPersonalLogs(){
+async function showPersonalLogs(){ // ! test if there are logs for that person if there are logs then start acceslog()
   fetch("https://testapi.robli.at/log/user", {
     method: "POST",
     body: JSON.stringify({
@@ -216,11 +210,7 @@ async function showPersonalLogs(){
 })
 }
 
-function showLog(){
-  window.open("logs.html");
-}
-
-async function accessLog(data){
+async function accessLog(data){ // ! creates the log entries for the html page
   let response = await fetch("https://testapi.robli.at/machine/all",{headers: {"Authorization": Bearer}});
   let data1 = await response.json();
   const arr=[];
@@ -250,17 +240,11 @@ async function accessLog(data){
 }
   function updateUser(){
     localStorage.setItem("update", event.srcElement.id);
-    showEditPage();
-  }
-
-  function showEditPage(){
     location.href="../all/edit.html";
   }
 
   function updateMachine(){
     localStorage.setItem("update", event.srcElement.id);
-    showEditmach();
-  }
-  function showEditmach(){
     location.href="../all/editmachine.html";
   }
+ 

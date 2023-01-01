@@ -2,9 +2,7 @@ var form = document.getElementById("form");
 let Bearer = localStorage.getItem("token");
 form.addEventListener("submit", function (e) {
   e.preventDefault();
-  
   p = document.createElement("p");
-
   var name = document.getElementById("inp").value;
   if(name!=""){
   fetch("https://testapi.robli.at/machine/add", {

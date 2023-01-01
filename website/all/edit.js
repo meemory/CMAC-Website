@@ -1,5 +1,6 @@
 let Bearer= localStorage.getItem("token");
-function updatePerson(){
+
+function updatePerson(){ // * edit the person with
         var dict={};
         var allow=[];
         var temp=[];
@@ -63,7 +64,7 @@ function updatePerson(){
   }
 
 
-function updateMachine() {
+function updateMachine() { // * edit the machine name
         var name="";
         if(document.getElementById("name").placeholder == document.getElementById("name").value){
           alert("please fill in a name")  
@@ -91,7 +92,7 @@ function updateMachine() {
 
 }
  
- async function showMachineNames(){
+ async function showMachineNames(){ 
     let [data, data1] = await Promise.all([
       fetch("https://testapi.robli.at/user/all",{headers: {"Authorization": Bearer}}).then((response) =>
         response.json()
