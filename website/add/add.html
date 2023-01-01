@@ -52,30 +52,28 @@
         <div class="col-5 mx-auto">
             <div class="card shadow border">
                 <div class="card-body d-flex flex-column align-items-center">
-                    <p class="card-text"> 
-                      <form class="d-flex flex-column gap-2" role="search">
+                  <p class="card-text"> 
+                      <form id="form" class="d-flex flex-column gap-2" method="post">
                         <div class="d-flex flex-row gap-2">
                           <label>name: </label>
-                          <input id="name" class="form-control me-2" type="text" placeholder="name">
+                          <input id="name" class="form-control me-2" type="text" placeholder="name" required>
                         </div>
                         <div class="d-flex flex-row gap-2"> 
                           <label>surname: </label> 
-                          <input id="surname" class="form-control me-2" type="text" placeholder="surname">
+                          <input id="surname" class="form-control me-2" type="text" placeholder="surname" required>
                         </div>  
                         <div class="d-flex flex-row gap-2">
                           <label>mail: </label> 
-                          <input id="email" class="form-control me-2" type="text" placeholder="email">
+                          <input id="email" class="form-control me-2" type="email" placeholder="email" required >
                         </div>  
                         <div class="d-flex flex-row gap-2">
                           <label>nfc id: </label> 
-                          <input id="nfcid" class="form-control me-2" type="text" placeholder="ndcid">
+                          <input id="nfcid" class="form-control me-2" type="text" placeholder="NFC-ID" required>
                         </div>
                         <select id="show" class="selectpicker" multiple>
                         </select>
-
-                        <div class="container mt-5">
-                          <a href="#" class="d-flex flex-column gap-2 btn btn-dark" onclick="addUsr()">Send</a>
-                        </div>
+\
+                          <input class="d-flex flex-column gap-2 btn btn-dark" type="submit" value="Send"/>
                         </form>
                     </p>
                 </div>

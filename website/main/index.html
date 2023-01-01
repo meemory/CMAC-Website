@@ -21,42 +21,79 @@
   <body class="bg-dark text-white">
     <nav class="navbar navbar-dark bg-dark fixed-top">
       <div class="container-fluid">
-        <a class="navbar-brand h1"  href="../main/index.html" >[LOGO] CMAC</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-          <span class="navbar-toggler-icon "></span>
+        <a class="navbar-brand h1" href="../main/index.html">[LOGO] CMAC</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar"
+        >
+          <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="offcanvas offcanvas-end bg-dark" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div
+          class="offcanvas offcanvas-end bg-dark"
+          tabindex="-1"
+          id="offcanvasNavbar"
+          aria-labelledby="offcanvasNavbarLabel"
+        >
           <div class="offcanvas-header">
-            <h5 class="offcanvas-title text-white" id="offcanvasNavbarLabel">[LOGO] CMAC</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <h5 class="offcanvas-title text-white" id="offcanvasNavbarLabel">
+              [LOGO] CMAC
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
           </div>
-          <div class="offcanvas-body ">
+          <div class="offcanvas-body">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li class="nav-item">
-                <a class="nav-link"href="../add/add.html">add a person</a>
+                <a class="nav-link" href="../add/add.html">add a person</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="../add/addmachine.html">add a machine</a>
+                <a class="nav-link" href="../add/addmachine.html"
+                  >add a machine</a
+                >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="../all/allmachines.html">show all machines</a>
+                <a class="nav-link" href="../all/allmachines.html"
+                  >show all machines</a
+                >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="../all/allpersons.html">show all persons</a>
+                <a class="nav-link" href="../all/allpersons.html"
+                  >show all persons</a
+                >
               </li>
-            
             </ul>
           </div>
         </div>
       </div>
     </nav>
     <!-- Navbar end -->
-    <div class="h-100 vh-100 d-flex flex-column justify-content-center align-items-center">
-      <div class="intro-title fw-bold">welcome to <span class="colorgreen">CMAC!</span></div>
-      <p>On this website you can manage and monitor the access of your machines.</p>
-      <button class="btn btn-light"type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">all functions</button>
+    <div
+      class="h-100 vh-100 d-flex flex-column justify-content-center align-items-center"
+    >
+      <div class="intro-title fw-bold">
+        welcome to <span class="colorgreen">CMAC!</span>
+      </div>
+      <p>
+        On this website you can manage and monitor the access of your machines.
+      </p>
+      <button
+        class="btn btn-light"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasNavbar"
+        aria-controls="offcanvasNavbar"
+      >
+        all functions
+      </button>
     </div>
-    
+
     <script src="../checkjwt.js"></script>
   </body>
 </html>

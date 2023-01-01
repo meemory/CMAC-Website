@@ -15,28 +15,55 @@
     <!-- Navbar start -->
     <nav class="navbar navbar-dark bg-dark fixed-top">
       <div class="container-fluid">
-        <a class="navbar-brand h1"  href="../main/index.html" >[LOGO] CMAC</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-          <span class="navbar-toggler-icon "></span>
+        <a class="navbar-brand h1" href="../main/index.html">[LOGO] CMAC</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar"
+        >
+          <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="offcanvas offcanvas-end bg-dark" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div
+          class="offcanvas offcanvas-end bg-dark"
+          tabindex="-1"
+          id="offcanvasNavbar"
+          aria-labelledby="offcanvasNavbarLabel"
+        >
           <div class="offcanvas-header">
-            <h5 class="offcanvas-title text-white"   id="offcanvasNavbarLabel">[LOGO] CMAC</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <h5 class="offcanvas-title text-white" id="offcanvasNavbarLabel">
+              [LOGO] CMAC
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
           </div>
-          <div class="offcanvas-body ">
+          <div class="offcanvas-body">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li class="nav-item">
                 <a class="nav-link" href="../add/add.html">add a person</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="../add/addmachine.html">add a machine</a>
+                <a class="nav-link" href="../add/addmachine.html"
+                  >add a machine</a
+                >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="../all/allmachines.html">show all machines</a>
+                <a class="nav-link" href="../all/allmachines.html"
+                  >show all machines</a
+                >
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="../all/allpersons.html">show all persons</a>
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="../all/allpersons.html"
+                  >show all persons</a
+                >
               </li>
             </ul>
           </div>
@@ -45,26 +72,28 @@
     </nav>
     <!-- Navbar end -->
     <div class="container">
-        <div class="row align-items-center vh-100">
-            <div class="col-6 mx-auto">
-                <div class="card text-bg-dark border-dark shadow border">
-                    <div class="card-body d-flex flex-column align-items-center">
-                        <table class="table table-dark table-striped" style="margin-top: 30px">
-                            <thead>
-                                <tr>
-                                <th scope="col">machine</th>
-                                <th scope="col">logged in</th>
-                                <th scope="col">logged out</th>
-                                <th scope="col">time spent</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tmain">
-                            </tbody>
-                            </table>
-                    </div>
-                </div>
+      <div class="row align-items-center vh-100">
+        <div class="col-6 mx-auto">
+          <div class="card text-bg-dark border-dark shadow border">
+            <div class="card-body d-flex flex-column align-items-center">
+              <table
+                class="table table-dark table-striped"
+                style="margin-top: 30px"
+              >
+                <thead>
+                  <tr>
+                    <th scope="col">machine</th>
+                    <th scope="col">logged in</th>
+                    <th scope="col">logged out</th>
+                    <th scope="col">time spent</th>
+                  </tr>
+                </thead>
+                <tbody id="tmain"></tbody>
+              </table>
             </div>
+          </div>
         </div>
+      </div>
     </div>
 
     <script

@@ -1,17 +1,16 @@
 .intro-title {
   width: 16ch;
-  animation: typing 2s steps(22),
-  blink .5s step-end infinite alternate;
+  animation: typing 2s steps(22), blink 0.5s step-end infinite alternate;
   white-space: nowrap;
   overflow: hidden;
   border-right: 3px solid;
-  border-color:#008d8c;
+  border-color: #008d8c;
   padding-right: -50px;
   font-family: monospace;
   font-size: 2em;
 }
-.colorgreen{
-    color:#008d8c;
+.colorgreen {
+  color: #008d8c;
 }
 .Typist {
   height: 100vh;
@@ -20,13 +19,16 @@
 }
 @keyframes typing {
   from {
-    width: 0
+    width: 0;
   }
 }
 @keyframes blink {
   50% {
-    border-color: transparent
+    border-color: transparent;
   }
 }
 
-.btn:hover, .btn:active {background-color: #008d8c !important;}
+.btn:hover,
+.btn:active {
+  background-color: #008d8c !important;
+}
